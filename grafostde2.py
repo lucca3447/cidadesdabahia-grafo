@@ -28,11 +28,14 @@ arestas = [
     ("Feira de Santana", "Serrinha", 68),
     ("Feira de Santana", "Vitória da Conquista", 377),
     ("Serrinha", "Juazeiro", 373),
-    ("Vitória da Conquista", "Juazeiro", 520),
-    ("Juazeiro", "Paulo Afonso", 210),
-    ("Itabuna", "Ilhéus", 30),
+    ("Vitória da Conquista", "Juazeiro", 760),
+    ("Itabuna", "Ilhéus", 32),
     ("Salvador", "Ilhéus", 309),
-    ("Itabuna", "Vitória da Conquista", 222)
+    ("Itabuna", "Vitória da Conquista", 240),
+    ("Juazeiro", "Paulo Afonso", 370),
+    ("Paulo Afonso", "Serrinha", 320),
+    ("Paulo Afonso", "Feira de Santana", 385),
+    ("Paulo Afonso", "Vitória da Conquista", 550)
 ]
 
 G.add_weighted_edges_from(arestas)
