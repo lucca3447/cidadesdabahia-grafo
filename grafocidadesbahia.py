@@ -1,10 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
-
 G = nx.Graph()
-
-
 
 coordenadas = {
     "Salvador": (-12.9714, -38.5014),
@@ -19,7 +16,6 @@ coordenadas = {
     "Paulo Afonso": (-9.3983, -38.2216)
 }
 
-
 arestas = [
     ("Salvador", "Feira de Santana", 116),
     ("Salvador", "Camaçari", 50),
@@ -28,30 +24,37 @@ arestas = [
     ("Feira de Santana", "Serrinha", 68),
     ("Feira de Santana", "Vitória da Conquista", 377),
     ("Serrinha", "Juazeiro", 373),
-    ("Vitória da Conquista", "Juazeiro", 520),
-    ("Juazeiro", "Paulo Afonso", 210),
-    ("Itabuna", "Ilhéus", 30),
+    ("Vitória da Conquista", "Juazeiro", 760),
+    ("Itabuna", "Ilhéus", 32),
     ("Salvador", "Ilhéus", 309),
-    ("Itabuna", "Vitória da Conquista", 222)
+    ("Itabuna", "Vitória da Conquista", 240),
+    ("Juazeiro", "Paulo Afonso", 370),
+    ("Paulo Afonso", "Serrinha", 320),
+    ("Paulo Afonso", "Feira de Santana", 385),
+    ("Paulo Afonso", "Vitória da Conquista", 550)
 ]
 
-G.add_weighted_edges_from(arestas)
+
+arestas_arredondadas = [(a, b, round(w, 1)) for a, b, w in arestas]
+G.add_weighted_edges_from(arestas_arredondadas)
 
 
 pos = {cidade: (lon, lat) for cidade, (lat, lon) in coordenadas.items()}
 
-
-plt.figure(figsize=(8, 8))
+plt.figure(figsize=(10, 10))
 nx.draw(
     G, pos, with_labels=True,
-    node_color="lightblue", node_size=1800, font_size=10,
-    font_weight="bold", edge_color="gray", width=2
+    node_color="lightblue", node_size=1800,
+    font_size=10, font_weight="bold",
+    edge_color="gray", width=2
 )
 
-nx.draw_networkx_edge_labels(G, pos, edge_labels=nx.get_edge_attributes(G, "weight"))
+edge_labels = nx.get_edge_attributes(G, "weight")
+nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=8)
 
-plt.title("Cidades da Bahia (Posições e distâncias reais)", fontsize=14)
+plt.title("Cidades da Bahia (Posições e distâncias por estrada)", fontsize=14)
 plt.xlabel("Longitude")
 plt.ylabel("Latitude")
+plt.axis("equal")   
 plt.grid(True)
 plt.show()
