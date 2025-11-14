@@ -41,20 +41,21 @@ G.add_weighted_edges_from(arestas_arredondadas)
 
 pos = {cidade: (lon, lat) for cidade, (lat, lon) in coordenadas.items()}
 
-plt.figure(figsize=(10, 10))
-nx.draw(
-    G, pos, with_labels=True,
-    node_color="lightblue", node_size=1800,
-    font_size=10, font_weight="bold",
-    edge_color="gray", width=2
-)
+def exibir_grafo():
+    plt.figure(figsize=(10, 10))
+    nx.draw(
+        G, pos, with_labels=True,
+        node_color="lightblue", node_size=1800,
+        font_size=10, font_weight="bold",
+        edge_color="gray", width=2
+    )
 
-edge_labels = nx.get_edge_attributes(G, "weight")
-nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=8)
+    edge_labels = nx.get_edge_attributes(G, "weight")
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=8)
 
-plt.title("Cidades da Bahia (Posições e distâncias por estrada)", fontsize=14)
-plt.xlabel("Longitude")
-plt.ylabel("Latitude")
-plt.axis("equal")   
-plt.grid(True)
-plt.show()
+    plt.title("Cidades da Bahia (Posições e distâncias por estrada)", fontsize=14)
+    plt.xlabel("Longitude")
+    plt.ylabel("Latitude")
+    plt.axis("equal")   
+    plt.grid(True)
+    plt.show()

@@ -6,8 +6,10 @@ def Dijkstra(G, origem, destino):
     menor_caminho = nx.shortest_path(G,source=origem,target=destino,weight="weight")
 
     distancia_total = nx.shortest_path_length(G,source=origem,target=destino,weight="weight")
-
+    
     return menor_caminho, distancia_total
+
+    
 
 def heuristica(cidade1, cidade2, coordenadas):
     lat1, lon1 = coordenadas[cidade1]
