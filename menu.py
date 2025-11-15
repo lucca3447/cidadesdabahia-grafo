@@ -2,9 +2,9 @@ import os
 import time
 from algoritmosdebusca import Dijkstra
 from grafocidadesbahia import exibir_grafo 
-from grafocidadesbahia import G, coordenadas
+from grafocidadesbahia import G, coordenadas, pos
 from algoritmosdebusca import A_estrela
-
+from grafocidadesbahia import mostrar_caminho
 
 while True:
     os.system("cls")
@@ -29,6 +29,8 @@ while True:
             
             menor_caminho, distancia_total = Dijkstra(G, origem, destino)
             
+            caminho = mostrar_caminho(G, pos, menor_caminho)
+            
             fim = time.perf_counter()
             
             tempo = fim - inicio
@@ -47,7 +49,9 @@ while True:
             inicio = time.perf_counter()
 
             menor_caminho, distancia_total = A_estrela(G, origem, destino, coordenadas)
-
+            
+            caminho = mostrar_caminho(G, pos, menor_caminho)
+            
             fim = time.perf_counter()
 
             tempo = inicio - fim

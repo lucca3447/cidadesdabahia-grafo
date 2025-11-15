@@ -98,7 +98,7 @@ G.add_weighted_edges_from(arestas_arredondadas)
 pos = {cidade: (lon, lat) for cidade, (lat, lon) in coordenadas.items()}
 
 def exibir_grafo():
-    plt.figure(figsize=(10, 10))
+    plt.figure(figsize=(14, 14))
     nx.draw(
         G, pos, with_labels=True,
         node_color="lightblue", node_size=1800,
@@ -114,4 +114,41 @@ def exibir_grafo():
     plt.ylabel("Latitude")
     plt.axis("equal")   
     plt.grid(True)
+    plt.show(block=False)
+
+
+def mostrar_caminho(G, pos, caminho):
+    plt.figure(figsize=(8, 6))
+
+    
+    nx.draw(
+        G,
+        pos,
+        with_labels=True,
+        node_size=800,
+        font_size=10,
+        node_color="lightgray",
+        edge_color="gray"
+    )
+
+   
+    edges_caminho = list(zip(caminho, caminho[1:]))
+
+    
+    nx.draw_networkx_edges(
+        G,
+        pos,
+        edgelist=edges_caminho,
+        width=3,
+        edge_color="red"
+    )
+
+    nx.draw_networkx_nodes(
+        G,
+        pos,
+        nodelist=caminho,
+        node_color="red"
+    )
+
+    plt.title("Menor Caminho Encontrado")
     plt.show(block=False)
