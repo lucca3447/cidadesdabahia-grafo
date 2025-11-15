@@ -9,8 +9,8 @@ from grafocidadesbahia import mostrar_caminho
 while True:
     os.system("cls")
     print("Algoritmos de busca em grafos de cidades da bahia")
-    print("O que deseja fazer?")
-    print(" 1-Exibir grafo\n 2-Dijkstra \n 3-A* \n 4-Sair")
+    print("\nO que deseja fazer?")
+    print(" 1- Exibir grafo\n 2- Dijkstra \n 3-A* \n 4-Sair")
 
     escolha = input("")
 
@@ -44,11 +44,11 @@ while True:
                 print(f"Tempo -> {tempo:.4f} segundos")
 
             except KeyError:
-                print("\n❌ ERRO: Uma das cidades digitadas não existe no grafo.")
+                print("\nERRO: Uma das cidades digitadas não existe no grafo.")
                 print(f"Cidades disponíveis: {list(G.nodes)}")
 
             except Exception as e:
-                print(f"\n❌ Erro ao executar Dijkstra: {e}")
+                print(f"\nErro ao executar Dijkstra: {e}")
 
             input("\nAperte espaço para voltar ao menu")
 
@@ -73,11 +73,11 @@ while True:
                 print(f"Tempo -> {tempo:.4f}")
 
             except KeyError:
-                print("\n❌ ERRO: Uma das cidades digitadas não existe no grafo.")
+                print("\nERRO: Uma das cidades digitadas não existe no grafo.")
                 print(f"Cidades disponíveis: {list(G.nodes)}")
 
             except Exception as e:
-                print(f"\n❌ Erro ao executar A*: {e}")
+                print(f"\nErro ao executar A*: {e}")
 
             input("\nAperte espaço para voltar ao menu")
 
