@@ -14,53 +14,73 @@ while True:
 
     escolha = input("")
 
-
     match(escolha):
+
         case "1":
-            exibir_grafo()
-        
+            try:
+                exibir_grafo()
+            except Exception as e:
+                print(f"Erro ao exibir grafo: {e}")
+                input("Aperte qualquer tecla para continuar")
+
         case "2":
             input("Você escolheu aplicar Dijkstra, aperte qualquer tecla para continuar")
             print("A quais cidades(vertices) deseja aplicar o algoritmo?")
-            origem = input("Insira a origem ->   ")
-            destino = input("Insira o destino ->  ")
-            
-            inicio = time.perf_counter()
-            
-            menor_caminho, distancia_total = Dijkstra(G, origem, destino)
-            
-            caminho = mostrar_caminho(G, pos, menor_caminho)
-            
-            fim = time.perf_counter()
-            
-            tempo = fim - inicio
+            origem = input("Insira a origem ->   ").strip()
+            destino = input("Insira o destino ->  ").strip()
 
-            print(f"Distância total aproximada entre {origem} e {destino}--> {distancia_total} km")
-            print(f"Menor caminho percorrido segundo o algoritmo de Dijkstra--> {menor_caminho}")
-            print(f"Tempo -> {tempo:.4f} segundos")
-            input("\nAperte  espaço para  voltar ao menu")
-        
+            try:
+                inicio = time.perf_counter()
+
+                menor_caminho, distancia_total = Dijkstra(G, origem, destino)
+
+                mostrar_caminho(G, pos, menor_caminho)
+
+                fim = time.perf_counter()
+                tempo = fim - inicio
+
+                print(f"Distância total aproximada entre {origem} e {destino}--> {distancia_total} km")
+                print(f"Menor caminho percorrido segundo o algoritmo de Dijkstra--> {menor_caminho}")
+                print(f"Tempo -> {tempo:.4f} segundos")
+
+            except KeyError:
+                print("\n❌ ERRO: Uma das cidades digitadas não existe no grafo.")
+                print(f"Cidades disponíveis: {list(G.nodes)}")
+
+            except Exception as e:
+                print(f"\n❌ Erro ao executar Dijkstra: {e}")
+
+            input("\nAperte espaço para voltar ao menu")
+
         case "3":
             input("Você escolheu aplicar A*, aperte qualquer tecla para continuar")
             print("A quais cidades (vertices) deseja aplicar o algoritmo?")
-            origem = input("Insira a origem ->")
-            destino = input("Insira o destino ->")
+            origem = input("Insira a origem ->").strip()
+            destino = input("Insira o destino ->").strip()
 
-            inicio = time.perf_counter()
+            try:
+                inicio = time.perf_counter()
 
-            menor_caminho, distancia_total = A_estrela(G, origem, destino, coordenadas)
-            
-            caminho = mostrar_caminho(G, pos, menor_caminho)
-            
-            fim = time.perf_counter()
+                menor_caminho, distancia_total = A_estrela(G, origem, destino, coordenadas)
 
-            tempo = inicio - fim
+                mostrar_caminho(G, pos, menor_caminho)
 
-            print(f"Distancia total aproximada entre {origem} e {destino} --> {distancia_total}")
-            print(f"Menor caminho encontrado segundo o algoritmo A* --> {menor_caminho}")
-            print(f"Tempo -> {tempo:.4f}")
+                fim = time.perf_counter()
+                tempo = fim - inicio
+
+                print(f"Distancia total aproximada entre {origem} e {destino} --> {distancia_total}")
+                print(f"Menor caminho encontrado segundo o algoritmo A* --> {menor_caminho}")
+                print(f"Tempo -> {tempo:.4f}")
+
+            except KeyError:
+                print("\n❌ ERRO: Uma das cidades digitadas não existe no grafo.")
+                print(f"Cidades disponíveis: {list(G.nodes)}")
+
+            except Exception as e:
+                print(f"\n❌ Erro ao executar A*: {e}")
+
             input("\nAperte espaço para voltar ao menu")
-        
+
         case "4":
             confirmar = input("Você escolheu sair. Confirmar (s/n)? ")
             if confirmar.lower() == "s":
@@ -68,11 +88,7 @@ while True:
                 break  
             else:
                 print("Retornando ao menu...")
+
         case _:
             print("Opção invalida, por favor tente novamente")
             input("Aperte qualquer tecla para continuar")
-
-
-
-
-    
