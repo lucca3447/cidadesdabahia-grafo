@@ -114,4 +114,4 @@ def exibir_grafo():
     plt.ylabel("Latitude")
     plt.axis("equal")   
     plt.grid(True)
-    plt.show()
+    plt.show(block=False)
