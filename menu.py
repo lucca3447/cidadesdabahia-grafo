@@ -28,6 +28,7 @@ while True:
             print(f"Distância total aproximada entre {origem} e {destino}--> {distancia_total} km")
             print(f"Menor caminho percorrido segundo o algoritmo de Dijkstra--> {menor_caminho}")
             input("\nAperte  espaço para  voltar ao menu")
+        
         case "3":
             input("Você escolheu aplicar A*, aperte qualquer tecla para continuar")
             print("A quais cidades (vertices) deseja aplicar o algoritmo?")
@@ -40,13 +41,7 @@ while True:
             print(f"Menor caminho encontrado segundo o algoritmo A* --> {menor_caminho}")
             input("\nAperte espaço para voltar ao menu")
         
-        case "3":
-            print("Você escolheu aplicar a Busca em Largura")
-
-
-            
-
-        case "6":
+        case "4":
             confirmar = input("Você escolheu sair. Confirmar (s/n)? ")
             if confirmar.lower() == "s":
                 print("Encerrando...")
