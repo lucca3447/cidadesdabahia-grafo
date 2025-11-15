@@ -3,9 +3,9 @@ import math
 
 
 def Dijkstra(G, origem, destino):
-    menor_caminho = nx.shortest_path(G,source=origem,target=destino,weight="weight")
+    menor_caminho = nx.dijkstra_path(G,source=origem,target=destino,weight="weight")
 
-    distancia_total = nx.shortest_path_length(G,source=origem,target=destino,weight="weight")
+    distancia_total = nx.dijkstra_path_length(G,source=origem,target=destino,weight="weight")
     
     return menor_caminho, distancia_total
 
@@ -24,20 +24,3 @@ def A_estrela(G, origem, destino, coordenadas):
 
     return menor_caminho, distancia_total
 
-
-
-def BFS(G, origem, destino):
-    menor_caminho = nx.shortest_path(G,source=origem,target=destino)
-
-    distancia_total = len(menor_caminho) - 1
-
-    return menor_caminho, distancia_total
-
-
-
-def DFS(G, origem, destino):
-    try:
-        menor_caminho = list(nx.dfs_edges(G, source=origem))
-        return menor_caminho
-    except:
-        return None
